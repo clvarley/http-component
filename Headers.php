@@ -67,7 +67,7 @@ Class Headers
      * Checks to see if a named HTTP header has been set
      *
      * @param string $name Header name
-     * @return bool        Header set
+     * @return bool        Header set?
      */
     public function has( string $name ) : bool
     {

@@ -54,7 +54,7 @@ Class Parameters
      * Checks to see if a named parameter has been set
      *
      * @param string $name Parameter name
-     * @return bool        Parameter set
+     * @return bool        Parameter set?
      */
     public function has( string $name ) : bool
     {
@@ -69,5 +69,56 @@ Class Parameters
     public function all() : array
     {
         return $this->parameters;
+    }
+
+    /**
+     * Gets the value for the named parameter as a string
+     *
+     * If the parameter doesn't exist or cannot be represented as a string, an
+     * empty string will be returned instead.
+     *
+     * @param string $name Parameter name
+     * @return string      Parameter value
+     */
+    public function asString( string $name ) : string
+    {
+        return ( \is_scalar( $this->parameters[$name] )
+            ? (string)$this->parameters[$name]
+            : ''
+        );
+    }
+
+    /**
+     * Gets the value for the named parameter as an integer
+     *
+     * If the parameter doesn't exist or cannot be represented as an int, the
+     * return value will be 0.
+     *
+     * @param string $name Parameter name
+     * @return int         Parameter value
+     */
+    public function asInt( string $name ) : int
+    {
+        return ( \is_numeric( $this->parameters[$name] )
+            ? (int)$this->parameters[$name]
+            : 0
+        );
+    }
+
+    /**
+     * Gets the value(s) for the named parameter as an array
+     *
+     * If the parameter doesn't exist or cannot be represented as an array, an
+     * empty array will be returned instead.
+     *
+     * @param string $name Parameter name
+     * @return array       Parameter value
+     */
+    public function asArray( string $name ) : array
+    {
+        return ( \is_array( $this->parameters[$name] )
+            ? $this->parameters[$name]
+            : []
+        );
     }
 }
