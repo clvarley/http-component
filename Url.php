@@ -20,14 +20,14 @@ Class Url
     /**
      * The requested authority/domain
      *
-     * @var string $domain Url domain
+     * @var string $domain Domain component
      */
     public $domain = '';
 
     /**
      * Path to resource
      *
-     * @var string $path Url path
+     * @var string $path Path component
      */
     public $path = '';
 
