@@ -15,6 +15,23 @@ Class Request
 {
 
     /**
+     * Recognised HTTP methods we can respond to
+     *
+     * We are not currently planning to support the TRACE or CONNECT verbs.
+     *
+     * @var string[] ALLOWED_METHODS HTTP verbs
+     */
+    public const ALLOWED_METHODS = [
+        'OPTIONS'
+        'HEAD',
+        'GET',
+        'POST',
+        'PUT',
+        'PATCH',
+        'DELETE'
+    ];
+
+    /**
      * Request HTTP headers
      *
      * @var Headers $headers HTTP headers
