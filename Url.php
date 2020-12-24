@@ -11,6 +11,13 @@ Class Url
 {
 
     /**
+     * Regex used to parse URL strings
+     *
+     * @var string URL_REGEX Url regex
+     */
+    private const URL_REGEX = '/^(https?):\/\/([^\/]*)\/?([^?]*)(?:\?([^#]*)#([A-Za-z]*))?$/';
+
+    /**
      * The protocol being used
      *
      * @var string $scheme Url scheme
@@ -45,4 +52,25 @@ Class Url
      */
     public $fragment = '';
 
+    /**
+     * Attempt to parse to given string into a Url object
+     *
+     * @param string $url Subject string
+     * @return Url|null   Url object
+     */
+    public function fromString( string $url ) : ?Url
+    {
+        if ( !\preg_match( self::URL_REGEX, $url, $matches ) ) {
+            return null;
+        }
+
+        $url = new static;
+        $url->scheme   = $matches[1];
+        $url->domain   = $matches[2];
+        $url->path     = $matches[3] ?? '';
+        $url->query    = $matches[4] ?? '';
+        $url->fragment = $matches[5] ?? '';
+
+        return $url;
+    }
 }
