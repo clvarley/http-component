@@ -88,7 +88,7 @@ Class Url Implements \Stringable
             return null;
         }
 
-        $url = new static;
+        $url = new Url;
         $url->scheme   = $matches[1];
         $url->domain   = $matches[2];
         $url->path     = $matches[3] ?? '';
