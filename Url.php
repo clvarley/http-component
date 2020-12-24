@@ -7,11 +7,11 @@ namespace Http;
  *
  * @author C Varley <clvarley>
  */
-Class Url
+Class Url Implements \Stringable
 {
 
     /**
-     * Regex used to parse URL strings
+     * Basic regex used to parse URL strings
      *
      * @var string URL_REGEX Url regex
      */
@@ -51,6 +51,30 @@ Class Url
      * @var string $fragment Fragment identifier
      */
     public $fragment = '';
+
+    /**
+     * Returns the string representation of this URL
+     *
+     * @return string Url
+     */
+    public function __toString() : string
+    {
+        $url = "{$this->scheme}://{$this->domain}/";
+
+        if ( !empty( $this->path ) ) {
+            $url .= $this->path;
+        }
+
+        if ( !empty( $this->query ) ) {
+            $url .= "?{$this->query}";
+        }
+
+        if ( !empty( $this->fragment ) ) {
+            $url .= "#{$this->fragment}";
+        }
+
+        return $url;
+    }
 
     /**
      * Attempt to parse to given string into a Url object
