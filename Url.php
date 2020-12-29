@@ -11,13 +11,6 @@ Class Url Implements \Stringable
 {
 
     /**
-     * Basic regex used to parse URL strings
-     *
-     * @var string URL_REGEX Url regex
-     */
-    private const URL_REGEX = '/^(https?):\/\/([^\/]*)\/?([^?]*)(?:\?([^#]*)#([A-Za-z]*))?$/';
-
-    /**
      * The protocol being used
      *
      * @var string $scheme Url scheme
@@ -59,11 +52,7 @@ Class Url Implements \Stringable
      */
     public function __toString() : string
     {
-        $url = "{$this->scheme}://{$this->domain}/";
-
-        if ( !empty( $this->path ) ) {
-            $url .= $this->path;
-        }
+        $url = "{$this->scheme}://{$this->domain}{$this->path}";
 
         if ( !empty( $this->query ) ) {
             $url .= "?{$this->query}";
@@ -84,16 +73,18 @@ Class Url Implements \Stringable
      */
     public function fromString( string $url ) : ?Url
     {
-        if ( !\preg_match( self::URL_REGEX, $url, $matches ) ) {
+        $parts = \parse_url( $url );
+
+        if ( empty( $parts ) ) {
             return null;
         }
 
         $url = new Url;
-        $url->scheme   = $matches[1];
-        $url->domain   = $matches[2];
-        $url->path     = $matches[3] ?? '';
-        $url->query    = $matches[4] ?? '';
-        $url->fragment = $matches[5] ?? '';
+        $url->scheme   = $parts['scheme'];
+        $url->domain   = $parts['host'];
+        $url->path     = $parts['path'] ?? '';
+        $url->query    = $parts['query'] ?? '';
+        $url->fragment = $parts['fragment'] ?? '';
 
         return $url;
     }
