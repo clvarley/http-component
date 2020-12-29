@@ -59,7 +59,7 @@ Class Request
      *
      * @var string $method HTTP verb
      */
-    protected $method = '';
+    protected $method;
 
     /**
      * URL used to generate this request
@@ -76,11 +76,12 @@ Class Request
     protected $content;
 
     /**
-     * Creates a new Request using the provided values
+     * Creates a new Request object from the provided values
      *
      * We do not recommend creating this object directly, instead please use the
      * RequestFactory class to instantiate new instances of this class.
      *
+     * @internal
      * @param string $method    HTTP method
      * @param Url $url          Request URL
      * @param Headers $headers  HTTP headers
@@ -89,10 +90,10 @@ Class Request
      */
     public function __construct( string $method, Url $url, Headers $headers, Parameters $query, Parameters $post )
     {
-        $this->method = \in_array( $method, static::ALLOWED_METHODS ) ? $method : 'GET';
-        $this->url = $url;
+        $this->method  = \in_array( $method, static::ALLOWED_METHODS ) ? $method : 'GET';
+        $this->url     = $url;
         $this->headers = $headers;
-        $this->query = $query;
-        $this->post = $post;
+        $this->query   = $query;
+        $this->post    = $post;
     }
 }
