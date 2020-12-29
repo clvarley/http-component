@@ -66,12 +66,12 @@ Class Url Implements \Stringable
     }
 
     /**
-     * Attempt to parse to given string into a Url object
+     * Attempt to parse the given string into a Url object
      *
      * @param string $url Subject string
      * @return Url|null   Url object
      */
-    public function fromString( string $url ) : ?Url
+    public static function fromString( string $url ) : ?Url
     {
         $parts = \parse_url( $url );
 
