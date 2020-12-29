@@ -2,9 +2,11 @@
 
 namespace Http\Server;
 
-use Http\Url;
-use Http\Parameters;
-use Http\Headers;
+use Http\{
+    Headers,
+    Parameters,
+    Url
+};
 
 /**
  * Class used to represent HTTP requests coming into the server
