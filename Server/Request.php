@@ -75,4 +75,24 @@ Class Request
      */
     protected $content;
 
+    /**
+     * Creates a new Request using the provided values
+     *
+     * We do not recommend creating this object directly, instead please use the
+     * RequestFactory class to instantiate new instances of this class.
+     *
+     * @param string $method    HTTP method
+     * @param Url $url          Request URL
+     * @param Headers $headers  HTTP headers
+     * @param Parameters $query Query parameters
+     * @param Parameters $post  Post parameters
+     */
+    public function __construct( string $method, Url $url, Headers $headers, Parameters $query, Parameters $post )
+    {
+        $this->method = \in_array( $method, static::ALLOWED_METHODS ) ? $method : 'GET';
+        $this->url = $url;
+        $this->headers = $headers;
+        $this->query = $query;
+        $this->post = $post;
+    }
 }
