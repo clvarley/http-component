@@ -82,7 +82,7 @@ Class Parameters
      */
     public function asString( string $name ) : string
     {
-        return ( \is_scalar( $this->parameters[$name] )
+        return ( isset( $this->parameters[$name] ) && \is_scalar( $this->parameters[$name] )
             ? (string)$this->parameters[$name]
             : ''
         );
@@ -99,7 +99,7 @@ Class Parameters
      */
     public function asInt( string $name ) : int
     {
-        return ( \is_numeric( $this->parameters[$name] )
+        return ( isset( $this->parameters[$name] ) && \is_numeric( $this->parameters[$name] )
             ? (int)$this->parameters[$name]
             : 0
         );
@@ -116,7 +116,7 @@ Class Parameters
      */
     public function asArray( string $name ) : array
     {
-        return ( \is_array( $this->parameters[$name] )
+        return ( isset( $this->parameters[$name] ) && \is_array( $this->parameters[$name] )
             ? $this->parameters[$name]
             : []
         );
