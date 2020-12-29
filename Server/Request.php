@@ -24,7 +24,7 @@ Class Request
      * @var string[] ALLOWED_METHODS HTTP verbs
      */
     public const ALLOWED_METHODS = [
-        'OPTIONS'
+        'OPTIONS',
         'HEAD',
         'GET',
         'POST',
