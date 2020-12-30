@@ -70,6 +70,17 @@ Class Response
     }
 
     /**
+     * Sets the content type of this response
+     *
+     * @param string $type Content type
+     * @return void        N/a
+     */
+    public function setContentType( string $type ) : void
+    {
+        $this->headers->set( 'Content-Type', $type );
+    }
+
+    /**
      * Sends this HTTP response to the client
      *
      * @return void N/a
