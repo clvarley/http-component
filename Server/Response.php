@@ -36,11 +36,11 @@ Class Response
     /**
      * Creates a new HTTP response using the values provided
      *
-     * @param int $status     (Optional) Status code
      * @param string $content (Optional) Response body
+     * @param int $status     (Optional) Status code
      * @param array $headers  (Optional) Http headers
      */
-    public function __construct( int $status = 200, string $content = '', array $headers = [] )
+    public function __construct( string $content = '', int $status = 200, array $headers = [] )
     {
         $this->status  = $status;
         $this->content = $content;
