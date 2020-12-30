@@ -30,7 +30,7 @@ Class RequestFactory
     {
         return new Request(
             $method,
-            Url::fromString( $url );
+            Url::fromString( $url ),
             new Headers( $headers ),
             new Parameters( $query ),
             new Parameters( $post )
