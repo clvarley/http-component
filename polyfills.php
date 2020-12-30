@@ -9,18 +9,17 @@ if ( !interface_exists( 'Stringable', false ) ) {
     {
         public function __toString() : string;
     }
-
 }
 
 
-if ( !function_exists( 'getallheaders' ) ) {
+if ( !function_exists( 'apache_request_headers' ) ) {
 
     /**
-     * Fetch all HTTP request headers
+     * Fetch all HTTP request headers from the current request
      *
      * @return array HTTP headers
      */
-    function getallheaders() : array
+    function apache_request_headers() : array
     {
         if ( empty( $_SERVER ) ) {
             return [];
@@ -43,4 +42,11 @@ if ( !function_exists( 'getallheaders' ) ) {
         return $headers;
     }
 
+    /**
+     * Alias of apache_request_headers
+     */
+    function getallheaders() : array
+    {
+        return apache_request_headers();
+    }
 }
