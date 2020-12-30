@@ -41,12 +41,12 @@ Class JsonResponse Extends Response
     }
 
     /**
-     * Sets the content of this response
+     * Sets the JSON content of this response
      *
      * @param array $json Response content
      * @return void       N/a
      */
-    public function setContent( array $json ) : void
+    public function setJson( array $json ) : void
     {
         $this->json = $content;
     }
