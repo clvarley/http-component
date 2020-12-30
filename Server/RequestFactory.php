@@ -40,6 +40,7 @@ Class RequestFactory
     /**
      * Creates a Request object from the global request values
      *
+     * @global array $_SERVER
      * @return Request Request object
      */
     public function fromGlobals() : Request
@@ -56,6 +57,7 @@ Class RequestFactory
     /**
      * Returns the absolute URL for the request
      *
+     * @global array $_SERVER
      * @return string Absolute URL
      */
     private function getAbsoluteUrl() : string
