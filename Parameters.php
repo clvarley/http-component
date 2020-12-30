@@ -15,14 +15,14 @@ Class Parameters
      *
      * @var array[]
      */
-    protected $parameters = [];
+    protected $parameters;
 
     /**
      * Creates a new parameter bag from the (optionally) provided parameters
      *
      * @param array $parameters (Optional) Http parameters
      */
-    public function __construct( array $parameters )
+    public function __construct( array $parameters = [] )
     {
         $this->parameters = $parameters;
     }

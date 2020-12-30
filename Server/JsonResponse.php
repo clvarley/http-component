@@ -17,7 +17,7 @@ Class JsonResponse Extends Response
      *
      * @var array $json JSON content
      */
-    protected $json = [];
+    protected $json;
 
     /**
      * Encoding options used during json_encode
@@ -35,9 +35,9 @@ Class JsonResponse Extends Response
      */
     public function __construct( array $json = [], int $status = 200, array $headers = [] )
     {
-        $this->json    = $json;
-        $this->status  = $status;
-        $this->headers = new Headers( $headers );
+        $this->json = $json;
+
+        parent::__construct( '', $status, $headers );
     }
 
     /**

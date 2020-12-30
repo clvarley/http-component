@@ -31,7 +31,7 @@ Class Response
      *
      * @var string $content Response body
      */
-    protected $content = '';
+    protected $content;
 
     /**
      * Creates a new HTTP response using the values provided
