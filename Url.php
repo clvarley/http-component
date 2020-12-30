@@ -80,10 +80,10 @@ Class Url Implements \Stringable
         }
 
         $url = new Url;
-        $url->scheme   = $parts['scheme'];
-        $url->domain   = $parts['host'];
-        $url->path     = $parts['path'] ?? '';
-        $url->query    = $parts['query'] ?? '';
+        $url->scheme   = $parts['scheme']   ?? 'http';
+        $url->domain   = $parts['host']     ?? '';
+        $url->path     = $parts['path']     ?? '';
+        $url->query    = $parts['query']    ?? '';
         $url->fragment = $parts['fragment'] ?? '';
 
         return $url;
