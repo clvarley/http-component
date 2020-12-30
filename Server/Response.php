@@ -5,7 +5,9 @@ namespace Http\Server;
 use Http\Headers;
 
 /**
+ * Class used to send HTTP responses to the client
  *
+ * @author C Varley <clvarley>
  */
 Class Response
 {
@@ -46,6 +48,28 @@ Class Response
     }
 
     /**
+     * Sets the status code of this response
+     *
+     * @param int $status Status code
+     * @return void       N/a
+     */
+    public function setStatus( int $status ) : void
+    {
+        $this->status = $status;
+    }
+
+    /**
+     * Sets the content of this response
+     *
+     * @param string $content Response body
+     * @return void           N/a
+     */
+    public function setContent( string $content ) : void
+    {
+        $this->content = $content;
+    }
+
+    /**
      * Sends this HTTP response to the client
      *
      * @return void N/a
@@ -56,7 +80,7 @@ Class Response
 
         foreach ( $this->headers->all() as $name => $values ) {
             foreach ( $values as $index => $value ) {
-                \header( "$name: $value", $index < 1 );
+                \header( "$name: $value", $index === 0 );
             }
         }
 
