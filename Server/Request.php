@@ -82,7 +82,7 @@ Class Request
      * RequestFactory class to instantiate new instances of this class.
      *
      * @internal
-     * @param string $method    HTTP method
+     * @param string $method    HTTP verb
      * @param Url $url          Request URL
      * @param Headers $headers  HTTP headers
      * @param Parameters $query Query parameters
@@ -95,5 +95,43 @@ Class Request
         $this->headers = $headers;
         $this->query   = $query;
         $this->post    = $post;
+    }
+
+    /**
+     * Returns the HTTP method used for this request
+     *
+     * @return string HTTP verb
+     */
+    public function getMethod() : string
+    {
+        return $this->method;
+    }
+
+    /**
+     * Returns the protocol of this request
+     *
+     * @return string Request protocol
+     */
+    public function getProtocol() : string
+    {
+        return $this->url->scheme;
+    }
+
+    /**
+     * Returns the URL path of this request
+     *
+     * @return string Request path
+     */
+    public function getPath() : string
+    {
+        return $this->url->path;
+    }
+
+    /**
+     * Checks if this request was made via a secure protocol
+     */
+    public function isSecure() : bool
+    {
+        return $this->url->scheme === 'https';
     }
 }
