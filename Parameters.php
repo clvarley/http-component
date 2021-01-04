@@ -13,7 +13,7 @@ Class Parameters
     /**
      * Array of HTTP parameters
      *
-     * @var array[]
+     * @var mixed[] $parameters Http parameters
      */
     protected $parameters;
 
