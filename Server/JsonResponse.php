@@ -63,7 +63,7 @@ Class JsonResponse Extends Response
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function send() : void
     {
